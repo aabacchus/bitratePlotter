@@ -31,4 +31,4 @@ The first two options are passed directly to ffmpeg_bitrate_stats.
 ---------------
 ## Output
 
-Either displays or saves graphs of bitrate in kB/s over the duration of `file`, depending on the `-o` option (see [Usage](#Usage))
+Either displays or saves graphs of bitrate in kB/s over the duration of `file`, depending on the `-o` option (see [Usage](#Usage)). If multiple input files are provided, they are put on the same graph in separate *subplots* (note that with a large number of subplots, formatting can get very unreadable)
