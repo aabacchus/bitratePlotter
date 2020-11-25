@@ -8,6 +8,7 @@ a tool for graph creation using [ffmpeg_bitrate_stats](https://github.com/slhck/
 + matplotlib
 
 Both of these can be installed by running pip on Requirements.txt:
+
 	pip3 install -r Requirements.txt
 
 ----------------
@@ -23,7 +24,7 @@ Both of these can be installed by running pip on Requirements.txt:
 
 	-h	Show help
 
-	file	input file
+	file	input file(s)
 
 The first two options are passed directly to ffmpeg_bitrate_stats.
 
