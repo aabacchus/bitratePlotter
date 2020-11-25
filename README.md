@@ -13,18 +13,19 @@ Both of these can be installed by running pip on Requirements.txt:
 ----------------
 ## Usage
 
-	bitratePlotter [-v {True,False}] [-s {video,audio}] [-c CHUNK_SIZE] [-g {True,False}] [-o OUTPUT_FILE] file
+	bitratePlotter [-h] [-s {video,audio}] [-c CHUNK_SIZE] [-g] [-o OUTPUT_FILE] file
 
-	-v	Show verbose output (default: False)
 	-s	Stream type to analyze (default: video)
 	-c	Custom aggregation window size in seconds (default: 1.0)
 
-	-g	Show gridlines on the graph(s) (default: True)
+	-g	Show gridlines on the graph(s)
 	-o	Save graphs as OUTPUT_FILE, if not present graphs are displayed
+
+	-h	Show help
 
 	file	input file
 
-The first three options are passed almost directly to ffmpeg_bitrate_stats.
+The first two options are passed directly to ffmpeg_bitrate_stats.
 
 ---------------
 ## Output
