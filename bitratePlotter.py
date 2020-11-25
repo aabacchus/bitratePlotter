@@ -21,14 +21,13 @@ outFile = ""
 def plot(filename,fbsArgs,ax):
     command = ["ffmpeg_bitrate_stats",filename]
     command.extend(fbsArgs) ## add arguments onto command
+    ## Execute the actual command doing the work
     stdout,stderr = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).communicate()
     d=json.loads(stdout)["bitrate_per_chunk"]
-    #with open(filename) as f:
-    #    d= json.load(f)["bitrate_per_chunk"]
 
     x = []
     for i in range(len(d)):
-        x.append(i/60)
+        x.append(i/60) # x is the x axis, in minutes here. TODO: x is variable depending on timescale of input
 
     ax.plot(x, d)
     ax.set_xlabel("time (min)")
@@ -64,11 +63,13 @@ if len(otherArgs) == 1:
     fig, ax = plt.subplots(1,1)
     plot(otherArgs[0],fbsArgs,ax)
 else:
-    ## otherwise analyse the files given
+    ## otherwise, analyse the multiple files given
     fig, ax = plt.subplots(len(otherArgs),1)
     plt.tight_layout()
     for f in range(len(otherArgs)):
         plot(otherArgs[f],fbsArgs,ax[f])
+
+## make the subplots sit together more nicely so you can see all the writing
 plt.subplots_adjust(left = 0.125, right = 0.9, bottom = 0.1, top = 0.9, wspace = 0.2, hspace = 0.5)
 if saveImg:
     plt.savefig(outFile)
