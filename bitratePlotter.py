@@ -18,7 +18,7 @@ showGrid = False
 saveImg = False
 outFile = ""
 
-def plot(filename,fbsArgs):
+def plot(filename,fbsArgs,ax):
     command = ["ffmpeg_bitrate_stats",filename]
     command.extend(fbsArgs) ## add arguments onto command
     stdout,stderr = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).communicate()
@@ -30,18 +30,13 @@ def plot(filename,fbsArgs):
     for i in range(len(d)):
         x.append(i/60)
 
-    plt.figure()
-    plt.plot(x,d)
-    plt.xlabel("time (min)")
-    plt.ylabel("bitrate (kB/s)")
-    plt.title(filename)
+    ax.plot(x, d)
+    ax.set_xlabel("time (min)")
+    ax.set_ylabel("bitrate (kB/s)")
+    ax.set_title(filename)
     if showGrid:
-        plt.grid()
+        ax.grid()
 
-    if saveImg:
-        plt.savefig(outFile)
-    else:
-        plt.show()
 
 def help():
     print("Help: see README.md#Usage")
@@ -63,8 +58,19 @@ print("FBS args: ",fbsArgs)
 if len(otherArgs) < 1:
     ## if no filename specified (as the final argument, with no option), ask for the input file
     filename = input("file name: ")
-    plot(filename,fbsArgs)
+    fig, ax = plt.subplots(1,1)
+    plot(filename,fbsArgs,ax)
+if len(otherArgs) == 1:
+    fig, ax = plt.subplots(1,1)
+    plot(otherArgs[0],fbsArgs,ax)
 else:
     ## otherwise analyse the files given
-    for f in otherArgs:
-        plot(f,fbsArgs)
+    fig, ax = plt.subplots(len(otherArgs),1)
+    plt.tight_layout()
+    for f in range(len(otherArgs)):
+        plot(otherArgs[f],fbsArgs,ax[f])
+plt.subplots_adjust(left = 0.125, right = 0.9, bottom = 0.1, top = 0.9, wspace = 0.2, hspace = 0.5)
+if saveImg:
+    plt.savefig(outFile)
+else:
+    plt.show()
