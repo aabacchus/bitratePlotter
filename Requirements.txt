@@ -1,1 +1,2 @@
 matplotlib
+ffmpeg_bitrate_stats
