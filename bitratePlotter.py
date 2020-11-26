@@ -39,6 +39,7 @@ def plot(filename,fbsArgs,ax):
 
 def help():
     print("Help: see README.md#Usage")
+    print("usage: bitratePlotter [-h] [-s {video,audio}] [-c CHUNK_SIZE] [-g] [-o OUTPUT_FILE] file\n\t\noptional arguments:\n\t-s\tStream type to analyze (default: video)\n\t-c\tCustom aggregation window size in seconds (default: 1.0)\n\t\n\t-g\tShow gridlines on the graph(s)\n\t-o\tSave graphs as OUTPUT_FILE, if not present graphs are displayed\n\t\n\t-h\tShow this help\n\t\npositional arguments:\n\tfile\tinput file(s)")
 
 for o,v in optionValuePairs:
     if o in ("-h", "--help"):
