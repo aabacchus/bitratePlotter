@@ -59,7 +59,7 @@ if len(otherArgs) < 1:
     filename = input("file name: ")
     fig, ax = plt.subplots(1,1)
     plot(filename,fbsArgs,ax)
-if len(otherArgs) == 1:
+elif len(otherArgs) == 1:
     fig, ax = plt.subplots(1,1)
     plot(otherArgs[0],fbsArgs,ax)
 else:
