@@ -14,13 +14,13 @@ Both of these can be installed by running pip on Requirements.txt:
 ----------------
 ## Usage
 
-	bitratePlotter [-h] [-s {video,audio}] [-c CHUNK\_SIZE] [-g] [-o OUTPUT\_FILE] file
+	bitratePlotter [-h] [-s {video,audio}] [-c CHUNK_SIZE] [-g] [-o OUTPUT_FILE] file
 
 	-s	Stream type to analyze (default: video)
 	-c	Custom aggregation window size in seconds (default: 1.0)
 
 	-g	Show gridlines on the graph(s)
-	-o	Save graphs as OUTPUT\_FILE, if not present graphs are displayed
+	-o	Save graphs as OUTPUT_FILE, if not present graphs are displayed
 
 	-h	Show help
 
